@@ -1,5 +1,5 @@
 import pytest
-from src.inventario import clasificar_stock
+from src.inventario import clasificar_stock, calcular_porcentaje_stock
 
 def test_stock_agotado():
     assert clasificar_stock(0, 20) == "AGOTADO"
@@ -16,3 +16,10 @@ def test_stock_normal():
 def test_stock_invalido():
     with pytest.raises(ValueError):
         clasificar_stock(-2, 20)
+
+def test_porcentaje_stock_normal():
+    assert calcular_porcentaje_stock(30, 20) == 150.0
+
+def test_porcentaje_stock_invalido():
+    with pytest.raises(ValueError):
+        calcular_porcentaje_stock(10, 0)
